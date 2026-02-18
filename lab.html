@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Form Validation Example</title>
+  </head>
+  <body>
+    <h1>User Registration Form</h1>
+
+    <form id="myForm" onsubmit="return validateForm();">
+      <label>Username: <input type="text" id="username" required /> </label
+      ><br /><br />
+
+      <label>Age: <input type="number" id="age" required /> </label><br /><br />
+
+      <label>Password: <input type="password" id="password" required /> </label
+      ><br /><br />
+
+      <button type="submit">Submit</button>
+    </form>
+
+    <p id="output"></p>
+
+    <script>
+      // Validate Username (not empty)
+      function validateUsername(username) {
+        return username.trim() !== "";
+      }
+
+      // Validate Age (between 8 and 60)
+      function validateAge(age) {
+        return age >= 8 && age <= 60;
+      }
+
+      // Validate Password (length >= 6, starts with alphabet, ends with digit)
+      function validatePassword(password) {
+        const pattern = /^[A-Za-z].{4,}\d$/;
+        return pattern.test(password);
+      }
+
+      // Main form validation
+      function validateForm() {
+        event.preventDefault();
+        const username = document.getElementById("username").value;
+        const age = parseInt(document.getElementById("age").value);
+        const password = document.getElementById("password").value;
+        const output = document.getElementById("output");
+
+        if (!validateUsername(username)) {
+          alert("Username cannot be empty.");
+          return false;
+        }
+
+        if (!validateAge(age)) {
+          alert("Age must be between 8 and 60.");
+          return false;
+        }
+
+        if (!validatePassword(password)) {
+          alert(
+            "Password must be at least 6 characters long, start with an alphabet, and end with a digit.",
+          );
+          return false;
+        }
+
+        output.innerText = "Form submitted successfully!";
+        return true;
+      }
+    </script>
+  </body>
+</html>

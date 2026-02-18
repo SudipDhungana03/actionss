@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Welcome to the Registration Page</h1>
+    <p>Sudip Era</p>
+   <h1>{{ user_input|safe }}</h1>
+   {% for u in registrations %}
+   <p>{{ u.name|safe }}</p>
+   {% endfor %}
+
+   <h2>
+    <script>
+        &lt;script&gt;
+    </script>
+   </h2>
+</body>
+</html>
